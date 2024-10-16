@@ -1,0 +1,96 @@
+html, body {
+  height: 100%;
+}
+#map {
+  height: 100%;
+}
+.markers {
+  border-radius: 8px;
+  color: black;
+  font-size: 15px;
+  padding: 10px 15px;
+  position: relative;
+}
+.markers::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, 0);
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+}
+.zero-beetles {
+  background-color: #a0bacd;
+}
+.zero-beetles::after {
+  border-top: 8px solid #a0bacd;
+} 
+.one-beetles {
+  background-color: #b18da5;
+}
+.one-beetles::after {
+  border-top: 8px solid #b18da5;
+}
+.two-beetles { 
+  background-color: #bf6792;
+}
+.two-beetles::after {
+  border-top: 8px solid #bf6792;
+}
+.three-beetles {
+  background-color: #c64d65;
+}
+.three-beetles::after {
+  border-top: 8px solid #c64d65;
+}
+.four-beetles {
+  background-color: #cd3b47;
+}
+.four-beetles::after {
+  border-top: 8px solid #cd3b47;
+}
+.five-beetles {
+  background-color: #d8502e;
+}
+.five-beetles::after {
+  border-top: 8px solid #d8502e;
+}
+.six-beetles {
+  background-color: #e9952f;
+}
+.six-beetles::after {
+  border-top: 8px solid #e9952f;
+}
+.seven-beetles {
+  background-color: #efbc2e;
+}
+.seven-beetles::after {
+  border-top: 8px solid #efbc2e;
+}
+.eight-beetles {
+  background-color: #f5d52e;
+}
+.eight-beetles::after {
+  border-top: 8px solid #f5d52e;
+}
+.nine-beetles {
+  background-color: #f7d92e;
+}
+.nine-beetles::after {
+  border-top: 8px solid #f7d92e;
+}
+.ten-plus-beetles {
+  background-color: #ffff7b;
+}
+.ten-plus-beetles::after {
+  border-top: 8px solid #ffff7b;
+}
+.invalid-beetles {
+  background-color: #b3bbab;
+}
+.invalid-beetles::after {
+  border-top: 8px solid #b3bbab;
+}

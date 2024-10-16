@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<title>CRBVision</title> 
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon/favicon.ico') }}">
+<head>
+<style>
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+}
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+
+
+</head>
+<body>
+
+<h2>All CRB Image Catches</h2>
+<a href="https://www.crbvision.net/today" target="_blank">Just Today's Images</a> 
+<hr>
+
+
+<a href="https://www.crbhawaii.org/" target="_blank">Visit CRBHawai'i!</a> 
+<hr>
+
+<form action="/search" method="get">
+  <input autocomplete="off" autofocus name = "name" placeholder="R.." type="text">
+  <button type="submit">Submit Trap number</button>
+</form>
+<hr>
+
+{% for image_name in image_names %}
+{% if ('png' in image_name) or ('jpg' in image_name) or ('jpeg' in image_name) %}
+
+<div class="today">
+  <div class="gallery">
+   <!--  <a target="_blank" href=" {{url_for('static', filename=image_name)}}">  -->
+      <img src=" {{url_for('static', filename=image_name)}}" alt="Upload Problem" width="600" height="400">
+   <!-- </a>   -->
+    <div class="desc">{{image_name}}</div>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+
+
+<div class="clearfix"></div>
+
+<div style="padding:6px;">
+  <p>Inspired by W3 School Static Image Gallery.</p>
+</div>
+
+</body>
+</html>
+
+

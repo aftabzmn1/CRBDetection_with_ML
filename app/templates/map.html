@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/map.css') }}">
+{% endblock %}
+
+{% block title %}
+  CRB Delineation Website!
+{% endblock %}
+
+{% block content %}
+  {% if valid_island_template %}
+    <h1 class="valid">This is a map for {{ island_name_template | title }}!</h1>
+  {% else %}
+    <h1 class="invalid">{{ island_name_template }} is not found!</h1>
+  {% endif %}
+  <div id="map"></div>
+{% endblock %}
+
+{% block javascript %}
+  <script>
+    (g => { var h, a, k, p = "The Google Maps JavaScript API", c = "google", l = "importLibrary", q = "__ib__", m = document, b = window; b = b[c] || (b[c] = {}); var d = b.maps || (b.maps = {}), r = new Set, e = new URLSearchParams, u = () => h || (h = new Promise(async (f, n) => { await (a = m.createElement("script")); e.set("libraries", [...r] + ""); for (k in g) e.set(k.replace(/[A-Z]/g, t => "_" + t[0].toLowerCase()), g[k]); e.set("callback", c + ".maps." + q); a.src = `https://maps.${c}apis.com/maps/api/js?` + e; d[q] = f; a.onerror = () => h = n(Error(p + " could not load.")); a.nonce = m.querySelector("script[nonce]")?.nonce || ""; m.head.append(a) })); d[l] ? console.warn(p + " only loads once. Ignoring:", g) : d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)) })
+      ({ key: "replace-me", v: "weekly" });
+    async function initMap() {
+      const { Map } = await google.maps.importLibrary("maps");
+      const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+      const island_center = {{ island_center_template | tojson }}
+      map = new Map(document.getElementById("map"), {
+        zoom: 11,
+        center: {
+          "lat": island_center["latitude"],
+          "lng": island_center["longitude"],
+        },
+        mapId: "crbvision"
+      });
+
+      const url = "/traps/?island={{ computerized_island_name_template }}";
+      const response = await fetch(url);
+      let traps = await response.json();
+      for (let current_trap of traps) {
+        let marker_element = document.createElement("div");
+        if (current_trap["count"]== 0) {
+          marker_element.className = "zero-beetles markers";
+        } else if (current_trap["count"]== 1) {
+          marker_element.className = "one-beetles markers";
+        } else if (current_trap["count"] == 2) {
+          marker_element.className = "two-beetles markers";
+        } else if (current_trap["count"] == 3) {
+          marker_element.className = "three-beetles markers";
+        } else if (current_trap["count"] == 4) {
+          marker_element.className = "four-beetles markers";
+        } else if (current_trap["count"] == 5) {
+          marker_element.className = "five-beetles markers";
+        } else if (current_trap["count"] == 6) {
+          marker_element.className = "six-beetles markers";
+        } else if (current_trap["count"] == 7) {
+          marker_element.className = "seven-beetles markers";
+        } else if (current_trap["count"] == 8) {
+          marker_element.className = "eight-beetles markers";
+        } else if (current_trap["count"] == 9) {
+          marker_element.className = "nine-beetles markers";
+        } else if (current_trap["count"] >= 10) {
+          marker_element.className = "ten-plus-beetles markers";
+        } else {
+          marker_element.className = "invalid-beetles markers";
+        }        
+        if (0 <= current_trap["count"] && 9 >= current_trap["count"]) {
+          marker_element.textContent = current_trap["count"];
+        } else if (10 <= current_trap["count"]) {
+          marker_element.textContent = ("10+");
+        } else {
+          marker_element.textContent = ("Invalid");
+        }
+
+        const current_marker = new AdvancedMarkerElement({
+          map: map,
+          position: {
+            lat: Number(current_trap["coordinates"]["latitude"]),
+            lng: Number(current_trap["coordinates"]["longitude"]),
+          },
+          content: marker_element,
+        });
+      }
+    }
+    initMap();
+  </script>
+{% endblock %}

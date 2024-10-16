@@ -1,0 +1,14 @@
+tensorflow-cpu
+flask
+Pillow
+gunicorn
+uvicorn
+numpy
+python-multipart
+pytz
+flask_sqlalchemy 
+flask_login 
+flask_bcrypt 
+flask_wtf 
+wtforms 
+email_validator

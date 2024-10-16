@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}
+    Login Page
+{% endblock %}
+
+{% block content %}
+<body class="text-center">
+    <div class="container">
+        <form method="POST" class="form-signin" style="color:white">
+            {{ form.hidden_tag() }}
+             	<div class="row">
+            		<div class="col-md-6 mx-auto"> <!-- this line is added -->
+                			<img class="img-fluid mb-4" src="https://static.wixstatic.com/media/f836f2_1ad478773d36463d9fbcfc82b2aafa5e~mv2.jpg/v1/fill/w_1143,h_815,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f836f2_1ad478773d36463d9fbcfc82b2aafa5e~mv2.jpg" alt="">
+			<h1 class="h3 mb-3 font-weight-normal">
+            		</div> <!-- this line is added -->
+       	 </div> <!-- this line is added -->
+    
+                Please Login
+            </h1>
+            <br>
+            {{ form.username.label() }}
+            {{ form.username(class="form-control", placeholder="User Name") }}
+
+            {{ form.password.label() }}
+            {{ form.password(class="form-control", placeholder="Password") }}
+
+            <br>
+
+
+
+            {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+          
+               <div class="checkbox mb-3">
+               <h6>Do not have an account?</h6>
+               <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Register</a>
+            </div>
+
+
+        </form>
+    </div>
+</body>
+{% endblock %}

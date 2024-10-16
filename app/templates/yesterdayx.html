@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% block title %}
+    Yesterday Images!
+{% endblock %}
+{% block content %}
+
+<style>
+div.gallery {
+  border: 1px solid #ccc;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px;
+  image-rendering: smooth;
+
+}
+
+div.desc {
+  padding: 15px;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 24.99999%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.short-line {
+  width: 100%;
+  max-width: 315px;
+  margin: margin: 0 0 0 0;
+  border: 0;
+  border-top: 1px solid #ccc;
+}
+
+
+
+@media only screen and (max-width: 700px) {
+  .responsive {
+    width: 49.99999%;
+    margin: 6px 0;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .responsive {
+    width: 100%;
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.large-font {
+    color: white;
+}
+
+</style>
+</head>
+<body>
+
+<h2>Yesterday's Trap Light Catches on Oahu</h2>
+<div class="short-line"></div>
+
+
+
+<a href="http://www.crbvision.net/responsive2x" target="_blank" class="large-font">Trap Lights Today's Images</a> 
+<div class="short-line"></div>
+
+
+<div class="short-line"></div>
+<form action="/search" method="get">
+  <input autocomplete="off" autofocus name = "name" placeholder="X.." type="text">
+  <button type="submit">Submit Trap number</button>
+</form>
+<a href="https://www.crbhawaii.org/" target="_blank" class="large-font" >Visit CRBHawai'i!</a> 
+<hr>
+
+
+
+{% for image_name in image_names %}
+{% if ('png' in image_name) or ('jpg' in image_name) or ('jpeg' in image_name) %}
+
+<div class="responsive">
+  <div class="gallery">
+   <!--  <a target="_blank" href=" {{url_for('static', filename=image_name)}}">  -->
+      <img src=" {{url_for('static', filename=image_name)}}" alt="Upload Problem" width="600" height="400">
+   <!-- </a>   -->
+    <div class="desc">{{image_name}}</div>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+
+
+<div class="clearfix"></div>
+
+<div style="padding:6px;">
+  <p>Inspired by W3 School Static Image Gallery.</p>
+</div>
+
+
+{% endblock %}
+
+
+
+

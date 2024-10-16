@@ -1,0 +1,17 @@
+settings_version: 0.0.4
+datasets_dir: /home/imanprv/CRBVISION/datasets
+weights_dir: weights
+runs_dir: runs
+uuid: c8c0930f6d9b19e110c06efdce9ef441377df217447ba6ac748ad59fba5792f9
+sync: true
+api_key: ''
+openai_api_key: ''
+clearml: true
+comet: true
+dvc: true
+hub: true
+mlflow: true
+neptune: true
+raytune: true
+tensorboard: true
+wandb: true
