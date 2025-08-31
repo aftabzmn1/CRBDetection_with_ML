@@ -459,3 +459,20 @@ def traps():
   except FileNotFoundError:
     locations = []
   return locations
+# --- All Pages listing (new) ---
+PAGES_LIST = [
+    {"title": "Oahu Today", "endpoint": "today2"},
+    {"title": "Oahu Yesterday", "endpoint": "yesterday"},
+    {"title": "Kauai Today", "endpoint": "today2k"},
+    {"title": "Kauai Yesterday", "endpoint": "yesterdayk"},
+    {"title": "Maui Today", "endpoint": "today2M"},
+    {"title": "Maui Yesterday", "endpoint": "yesterdayM"},
+    {"title": "Big Island Today", "endpoint": "today2b"},
+    {"title": "Big Island Yesterday", "endpoint": "yesterdayb"},
+    {"title": "Molokai Today", "endpoint": "today2m"},
+    {"title": "Prediction Today", "endpoint": "todaypred"},
+]
+
+@app.route("/pages", methods=["GET"])
+def pages_list():
+    return render_template("pages_list.html", pages=PAGES_LIST)
