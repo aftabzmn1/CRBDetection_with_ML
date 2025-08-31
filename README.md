@@ -18,23 +18,20 @@ Local programs deploy traps and field monitoring to track activity. Images captu
 - Initial, non-invasive machine learning analysis to summarize activity trends and produce daily “prediction today” views
 - A foundation for map-based and island-specific pages sourced from the same image data
 
-> Scope note: This repository does not cover the electronics/circuitry work found in earlier efforts. The focus here is on image organization, data exploration, and ML-based predictions.
 
 ### Example trap image
 
-![CRB trap example](app/static/image/Trap_Image.png)
+<img src="app/static/image/Trap_Image.png" alt="CRB trap example" width="500" />
 
 ### Status
 
-Active development. Interfaces and data views may change as we refine the workflow and improve prediction quality. Feedback from field teams and stakeholders is welcome.
+Active development. Interfaces and data views may change as we refine the workflow and improve prediction quality. 
 
 ### Acknowledgment
 
-This project builds on the groundwork and prior materials associated with Dr. Paryavi. See the linked resources above and the included dissertation in `Publication/pyrovi_dissertation.pdf` for additional background context. We appreciate the community and agency partners contributing trap data and field insights.
+This project builds on the groundwork and prior materials associated with Dr. Paryavi. See the linked resources above and the included dissertation in `Publication/paryavi_dissertation.pdf` for additional background context. We appreciate the community and agency partners contributing trap data and field insights.
 
-### Using this repository
 
-If you are running the app locally, you can start the server with your usual Flask workflow and navigate to the daily pages (e.g., Oahu Today, Oahu Yesterday) and the “All Pages” listing. The codebase includes a minimal setup to render images stored under `app/static/` and a page for viewing daily predictions when available.
 
 ### License
 
